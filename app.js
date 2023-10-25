@@ -1,14 +1,14 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
+// middleware
+// middleware'ı çalıştırmak için use fonksiyonu kullanılır
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
-  const photo = {
-    id: 1,
-    name: 'Photo name',
-    desc: 'Photo description',
-  };
-  res.send(photo);
+  res.sendFile(path.resolve(__dirname, 'temp/index.html'));
 });
 
 // server'ın çalışması için listen metodunu yaz
